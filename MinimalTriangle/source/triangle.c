@@ -93,8 +93,8 @@ int	main(void) {
 	{
 		guLookAt(view, &camera,	&up, &look);
 		// GX_SetViewport(0,0,screenMode->fbWidth,screenMode->efbHeight,0,1); //why bother setting the view port every frame?
-		//GX_InvVtxCache(); //this is probably important for a regular applications
-		//GX_InvalidateTexAll(); //same here
+		GX_InvVtxCache(); //Commenting out this and the next line makes the rom break on hw, but not dolphin
+		GX_InvalidateTexAll(); 
 		update_screen(view);
 
 		// WPAD_ScanPads();
