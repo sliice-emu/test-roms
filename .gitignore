@@ -1,1 +1,5 @@
+output/
 build/
+*.dol
+*.elf
+*.map
