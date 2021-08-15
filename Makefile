@@ -3,6 +3,8 @@ ifeq ($(strip $(DEVKITPPC)),)
 $(error "Please set DEVKITPPC in your environment. export DEVKITPPC=<path to>devkitPPC")
 endif
 
+FOLDERS=MinimalTriangle
+
 build-dol-%: %
 	@make -C $<
 	@cp $</$<.dol output/$<.dol
@@ -10,9 +12,9 @@ build-dol-%: %
 clean-dol-%: %
 	@make -C $< clean
 
-all: build-dol-MinimalTriangle
+all: $(patsubst %, build-dol-%, $(FOLDERS))
 
-clean: clean-dol-MinimalTriangle
+clean: $(patsubst %, clean-dol-%, $(FOLDERS))
 	@rm -rf output/*.dol
 
 .PHONY: clean all
