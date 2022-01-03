@@ -1,0 +1,3 @@
+[submodule "wii-examples"]
+	path = wii-examples
+	url = https://github.com/devkitPro/wii-examples
