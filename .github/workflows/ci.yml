@@ -1,0 +1,29 @@
+name: Build Test ROMs
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+  # Useful for debugging/rerunning CI
+  workflow_dispatch:
+    inputs: {}
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    container:
+      image: 'devkitpro/devkitppc'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Building
+        run: make
+      - name: Uploading Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: Test ROMs
+          path: |
+            output
+            !output/.gitkeep
